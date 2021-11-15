@@ -11,8 +11,8 @@ CREATE TABLE Item (
 CREATE TABLE Customer (
 	id  				BIGINT NOT NULL AUTO_INCREMENT,
 	modificationCounter INTEGER NOT NULL,
-	firstName 			VARCHAR NOT NULL(255),
-	lastName			VARCHAR NOT NULL(255),
+	firstName 			VARCHAR(255) NOT NULL,
+	lastName			VARCHAR(255) NOT NULL,
 	PRIMARY KEY (ID),
 	CONSTRAINT UC_Customer_id UNIQUE(id)
 );
