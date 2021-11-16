@@ -2,8 +2,11 @@ package com.devonfw.app.java.order.orderservice.dataaccess.api;
 
 import javax.persistence.Entity;
 
-@Entity(name="Item")
-public class ItemEntity {
+import com.devonfw.app.java.order.general.dataaccess.api.ApplicationPersistenceEntity;
+import com.devonfw.app.java.order.orderservice.common.api.Item;
+
+@Entity(name = "Item")
+public class ItemEntity extends ApplicationPersistenceEntity implements Item {
 
 	private String name;
 
@@ -16,19 +19,25 @@ public class ItemEntity {
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String lastname) {
 		this.description = lastname;
 	}
+
 	public Double getPrice() {
 		return price;
 	}
+
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+
 }

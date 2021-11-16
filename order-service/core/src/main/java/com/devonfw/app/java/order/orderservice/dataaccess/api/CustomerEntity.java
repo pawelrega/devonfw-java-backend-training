@@ -1,10 +1,23 @@
 package com.devonfw.app.java.order.orderservice.dataaccess.api;
 
-public class CustomerEntity {
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+import com.devonfw.app.java.order.general.dataaccess.api.ApplicationPersistenceEntity;
+import com.devonfw.app.java.order.orderservice.common.api.Customer;
+
+@Entity(name = "Customer")
+public class CustomerEntity extends ApplicationPersistenceEntity implements Customer {
 
 	private String firstName;
 
-	private	String lastName;
+	private String lastName;
+
+	private Set<OrderEntity> orders;
+
+	private static final long serialVersionUID = 1L;
 
 	public String getFirstName() {
 		return firstName;
@@ -22,5 +35,13 @@ public class CustomerEntity {
 		this.lastName = lastName;
 	}
 
+	@OneToMany(mappedBy = "owner")
+	public Set<OrderEntity> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<OrderEntity> orders) {
+		this.orders = orders;
+	}
 
 }
