@@ -9,6 +9,7 @@ import com.querydsl.jpa.impl.JPAQuery;
 import static com.querydsl.core.alias.Alias.$;
 
 import java.util.Iterator;
+import java.util.Set;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
@@ -74,5 +75,7 @@ public interface ItemRepository extends DefaultRepository<ItemEntity> {
 			}
 		}
 	}
+
+	public Set<ItemEntity> findByName(String name);
 
 }

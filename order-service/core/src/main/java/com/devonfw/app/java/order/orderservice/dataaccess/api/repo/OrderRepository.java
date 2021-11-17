@@ -4,6 +4,7 @@ import static com.querydsl.core.alias.Alias.$;
 
 import java.time.LocalDate;
 import java.util.Iterator;
+import java.util.Set;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -61,7 +62,7 @@ public interface OrderRepository extends DefaultRepository<OrderEntity> {
 
 	/**
 	 * Add sorting to the given query on the given alias
-	 * 
+	 *
 	 * @param query to add sorting to
 	 * @param alias to retrieve columns from for sorting
 	 * @param sort  specification of sorting
@@ -106,5 +107,7 @@ public interface OrderRepository extends DefaultRepository<OrderEntity> {
 			}
 		}
 	}
+
+	Set<OrderEntity> findAllByCreationDateAndStatus(LocalDate creationDate, OrderStatus status);
 
 }
