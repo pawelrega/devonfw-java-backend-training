@@ -3,6 +3,7 @@ package com.devonfw.app.java.order.orderservice.logic.impl;
 import java.time.LocalDate;
 import java.util.Set;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -72,6 +73,7 @@ public class OrderserviceImpl extends AbstractComponentFacade implements Orderse
 		return this.ucManageCustomer.deleteCustomer(id);
 	}
 
+	@RolesAllowed("Waiter")
 	@Override
 	public ItemEto findItem(long id) {
 		return this.ucFindItem.findItem(id);
@@ -103,6 +105,7 @@ public class OrderserviceImpl extends AbstractComponentFacade implements Orderse
 		return this.ucFindOrder.findOrders(criteria);
 	}
 
+	@RolesAllowed("Admin, Cook")
 	@Override
 	public OrderEto saveOrder(OrderEto order) {
 

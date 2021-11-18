@@ -78,7 +78,7 @@ public abstract class BaseWebSecurityConfig extends WebSecurityConfigurerAdapter
         // activate crsf check for a selection of urls (but not for login & logout)
         //.csrf().requireCsrfProtectionMatcher(new CsrfRequestMatcher()).and()
         .csrf().disable().httpBasic().and()
-        
+
         .headers().frameOptions().sameOrigin().and()
 
         // configure parameters for simple form login (and logout)
@@ -140,8 +140,8 @@ public abstract class BaseWebSecurityConfig extends WebSecurityConfigurerAdapter
   @Inject
   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
-    auth.inMemoryAuthentication().withUser("waiter").password(this.passwordEncoder.encode("waiter")).roles("Waiter")
-        .and().withUser("cook").password(this.passwordEncoder.encode("cook")).roles("Cook").and().withUser("barkeeper")
+    auth.inMemoryAuthentication().withUser("waiter").password(this.passwordEncoder.encode("waiter")).authorities("Waiter")
+        .and().withUser("cook").password(this.passwordEncoder.encode("cook")).authorities("Cook").and().withUser("barkeeper")
         .password(this.passwordEncoder.encode("barkeeper")).roles("Barkeeper").and().withUser("chief")
         .password(this.passwordEncoder.encode("chief")).roles("Chief");
   }

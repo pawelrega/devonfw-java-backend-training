@@ -23,7 +23,12 @@ public class ApplicationAccessControlConfig extends AccessControlConfig {
 
   public static final String GROUP_READ_MASTER_DATA = PREFIX + "ReadMasterData";
 
+  public static final String GROUP_WAITER = PREFIX + "Waiter";
+
+  public static final String GROUP_COOK = PREFIX + "Cook";
+
   public static final String GROUP_ADMIN = PREFIX + "Admin";
+
 
   /**
    * The constructor.
@@ -32,7 +37,9 @@ public class ApplicationAccessControlConfig extends AccessControlConfig {
 
     super();
     AccessControlGroup readMasterData = group(GROUP_READ_MASTER_DATA, PERMISSION_FIND_BINARY_OBJECT);
-    group(GROUP_ADMIN, readMasterData, PERMISSION_SAVE_BINARY_OBJECT, PERMISSION_DELETE_BINARY_OBJECT);
+    AccessControlGroup waiter = group(GROUP_WAITER, readMasterData);
+    AccessControlGroup cook = group(GROUP_COOK, readMasterData, PERMISSION_SAVE_BINARY_OBJECT);
+    AccessControlGroup admin = group(GROUP_ADMIN, waiter, PERMISSION_SAVE_BINARY_OBJECT, PERMISSION_DELETE_BINARY_OBJECT);
   }
 
 }
